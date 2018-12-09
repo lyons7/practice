@@ -154,7 +154,7 @@ results.print_summary()
 
 # Logrank is a "hypothesis test to compare the survival distributions of two samples. It is a non-parametric test and appropriate
 # to use when the data are right-skewed and censored (techinally the censoring of the data should not be informative).
-#  The test is also called a Mantel-Cox test. The logrank test statistic compares estimates of the hazard functions of the two
+# The test is also called a Mantel-Cox test. The logrank test statistic compares estimates of the hazard functions of the two
 # groups at each observed event time. It's constructed by computing the observed and expected number of events in one of the
 # groups at each observed event time and then adding these to obtain an overall summary across time points where there is an event.
 # CENSORING MUST BE UNRELATED TO PROGNOSIS
@@ -167,4 +167,3 @@ results.print_summary()
 # and the events happened at the times specified. Deviations from these assumptions matter most if they are
 # satisfied differently in the groups being compared, for example if censoring is more likely in one group than another."
 # From Wikipedia: https://en.wikipedia.org/wiki/Logrank_test
- 
