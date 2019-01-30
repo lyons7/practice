@@ -56,3 +56,39 @@ variance(X, mean)
 
 # Get variance and mean of outcome
 mean_y = mean(y)
+
+
+# Let's do a linear regression with Scikit-learn
+# Help from here: https://towardsdatascience.com/train-test-split-and-cross-validation-in-python-80b61beca4b6
+import pandas as pd # Pandas
+from sklearn import datasets, linear_model # Datasets to get something to play with, linear_model for linear regression
+from sklearn.model_selection import train_test_split # To do train test split
+from matplotlib import pyplot as plt # Plot graphs
+
+# Load diabetes data set
+columns = "age sex bmi map tc ldl hdl tch ltg glu".split() # Declare the columns names
+diabetes = datasets.load_diabetes() # Call the diabetes dataset from sklearn
+df = pd.DataFrame(diabetes.data, columns=columns) # load the dataset as a pandas data frame
+y = diabetes.target # define the target variable (dependent variable) as y
+
+# create training and testing vars
+X_train, X_test, y_train, y_test = train_test_split(df, y, test_size=0.2)
+print(X_train.shape, y_train.shape)
+print (X_test.shape, y_test.shape)
+
+
+# fit a model
+lm = linear_model.LinearRegression()
+model = lm.fit(X_train, y_train)
+predictions = lm.predict(X_test)
+
+# Look at some predictions
+predictions[0:5]
+
+# Let's plot the model
+## The line / model
+plt.scatter(y_test, predictions)
+plt.xlabel("True Values")
+plt.ylabel("Predictions")
+
+print ("Score:", model.score(X_test, y_test))
